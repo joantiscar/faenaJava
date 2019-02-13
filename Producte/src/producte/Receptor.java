@@ -16,7 +16,7 @@ public class Receptor implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if ("stockActual".equals(evt.getPropertyName())) {
+        if (Producte.PROP_STOCKACTUAL.equals(evt.getPropertyName())) {
             if ((int) evt.getOldValue() > (int) evt.getNewValue()) {
                 System.out.println("El stock actual es mes petit que el stock minim!");
             }

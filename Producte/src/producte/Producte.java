@@ -37,7 +37,7 @@ public class Producte implements Serializable {
         float oldPvp = this.pvp;
         vetoableChangeSupport.fireVetoableChange(PROP_PVP, oldPvp, pvp);
         this.pvp = pvp;
-        propertySupport.firePropertyChange(PROP_PVP, oldPvp, pvp);
+//        propertySupport.firePropertyChange(PROP_PVP, oldPvp, pvp);
     }
 
     

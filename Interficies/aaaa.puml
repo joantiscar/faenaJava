@@ -1,0 +1,15 @@
+@startuml
+annotation java.lang.Override
+class interficies.ClasseAmbInterficie
+class interficies.ExempleDeMultipleInterficie
+class interficies.ExempleDolentDeClasseAmbInterficie
+interface interficies.ExempleInterficie
+interface interficies.UnaAltraInterficie
+interficies.ClasseAmbInterficie ..> java.lang.Override
+interficies.ClasseAmbInterficie --|> interficies.ExempleInterficie
+interficies.ExempleDeMultipleInterficie ..> java.lang.Override
+interficies.ExempleDeMultipleInterficie --|> interficies.ExempleInterficie
+interficies.ExempleDeMultipleInterficie --|> interficies.UnaAltraInterficie
+interficies.ExempleDolentDeClasseAmbInterficie ..> java.lang.Override
+interficies.ExempleDolentDeClasseAmbInterficie --|> interficies.ExempleInterficie
+@enduml

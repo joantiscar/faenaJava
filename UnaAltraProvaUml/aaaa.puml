@@ -1,0 +1,11 @@
+@startuml
+class Aplicacio
+class Client
+class Directiu
+class Empleat
+class Empresa
+class Persona
+class unaaltraprovauml.UnaAltraProvaUml
+Client --|> Persona
+Empleat --|> Persona
+@enduml

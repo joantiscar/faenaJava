@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Herencia">
+  <ClassDiagramComponents>
+    <Class name="SuperClasse" package="herencia" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="propietat1" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="int" name="propietat1"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Subclasse" package="herencia" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="propietat2" type="String" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="String" name="propietat2"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="herencia.Subclasse" target="herencia.SuperClasse"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

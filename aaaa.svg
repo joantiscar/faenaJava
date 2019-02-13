@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="238px" preserveAspectRatio="none" style="width:892px;height:238px;" version="1.1" viewBox="0 0 892 238" width="892px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f1fgifc05zgj6t" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g>
+        <!--cluster java.lang-->
+        <polygon fill="#FFFFFF" filter="url(#f1fgifc05zgj6t)" points="769,132,844,132,851,154.2969,885,154.2969,885,231,769,231,769,132" style="stroke: #000000; stroke-width: 2.0;"/>
+        <line style="stroke: #000000; stroke-width: 2.0;" x1="769" x2="851" y1="154.2969" y2="154.2969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="69" x="773" y="146.9951">java.lang</text>
+        <!--cluster interficies-->
+        <polygon fill="#FFFFFF" filter="url(#f1fgifc05zgj6t)" points="22,24,107,24,114,46.2969,745,46.2969,745,231,22,231,22,24" style="stroke: #000000; stroke-width: 2.0;"/>
+        <line style="stroke: #000000; stroke-width: 2.0;" x1="22" x2="114" y1="46.2969" y2="46.2969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="79" x="26" y="38.9951">interficies</text>
+        <!--class java.lang.Override-->
+        <rect fill="#FEFECE" filter="url(#f1fgifc05zgj6t)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="84" x="785" y="167"/>
+        <ellipse cx="800" cy="183" fill="#E3664A" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M802.0781,183.4688 Q802.0781,182.5313 801.6563,182 Q801.2344,181.4688 800.4844,181.4688 Q799.75,181.4688 799.3359,182 Q798.9219,182.5313 798.9219,183.4688 Q798.9219,184.4219 799.3359,184.9531 Q799.75,185.4844 800.4844,185.4844 Q801.2344,185.4844 801.6563,184.9531 Q802.0781,184.4219 802.0781,183.4688 Z M803.625,186.875 L802,186.875 L802,186.2031 Q801.6719,186.6406 801.25,186.8438 Q800.8281,187.0469 800.2188,187.0469 Q798.8594,187.0469 798.0313,186.0703 Q797.2031,185.0938 797.2031,183.4688 Q797.2031,181.875 798.0313,180.8984 Q798.8594,179.9219 800.2188,179.9219 Q800.8125,179.9219 801.2656,180.125 Q801.7188,180.3281 802,180.7188 L802,180.375 Q802,179.25 801.375,178.6328 Q800.75,178.0156 799.6094,178.0156 Q797.8906,178.0156 796.7969,179.5391 Q795.7031,181.0625 795.7031,183.5 Q795.7031,186.0469 796.9609,187.5469 Q798.2188,189.0469 800.3281,189.0469 Q800.9844,189.0469 801.6094,188.8594 Q802.2344,188.6719 802.8125,188.2813 L803.5781,189.7344 Q802.9063,190.1875 802.1094,190.4141 Q801.3125,190.6406 800.4063,190.6406 Q797.5,190.6406 795.7734,188.7109 Q794.0469,186.7813 794.0469,183.5 Q794.0469,180.2813 795.6016,178.3516 Q797.1563,176.4219 799.7188,176.4219 Q801.5156,176.4219 802.5703,177.5156 Q803.625,178.6094 803.625,180.4844 L803.625,186.875 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="52" x="814" y="187.1543">Override</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="786" x2="868" y1="199" y2="199"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="786" x2="868" y1="207" y2="207"/>
+        <!--class interficies.ClasseAmbInterficie-->
+        <rect fill="#FEFECE" filter="url(#f1fgifc05zgj6t)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="154" x="575" y="59"/>
+        <ellipse cx="590" cy="75" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M592.9688,80.6406 Q592.3906,80.9375 591.75,81.0859 Q591.1094,81.2344 590.4063,81.2344 Q587.9063,81.2344 586.5859,79.5859 Q585.2656,77.9375 585.2656,74.8125 Q585.2656,71.6875 586.5859,70.0313 Q587.9063,68.375 590.4063,68.375 Q591.1094,68.375 591.7578,68.5313 Q592.4063,68.6875 592.9688,68.9844 L592.9688,71.7031 Q592.3438,71.125 591.75,70.8516 Q591.1563,70.5781 590.5313,70.5781 Q589.1875,70.5781 588.5,71.6484 Q587.8125,72.7188 587.8125,74.8125 Q587.8125,76.9063 588.5,77.9766 Q589.1875,79.0469 590.5313,79.0469 Q591.1563,79.0469 591.75,78.7734 Q592.3438,78.5 592.9688,77.9219 L592.9688,80.6406 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="122" x="604" y="79.1543">ClasseAmbInterficie</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="576" x2="728" y1="91" y2="91"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="576" x2="728" y1="99" y2="99"/>
+        <!--class interficies.ExempleDeMultipleInterficie-->
+        <rect fill="#FEFECE" filter="url(#f1fgifc05zgj6t)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="203" x="37.5" y="59"/>
+        <ellipse cx="52.5" cy="75" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M55.4688,80.6406 Q54.8906,80.9375 54.25,81.0859 Q53.6094,81.2344 52.9063,81.2344 Q50.4063,81.2344 49.0859,79.5859 Q47.7656,77.9375 47.7656,74.8125 Q47.7656,71.6875 49.0859,70.0313 Q50.4063,68.375 52.9063,68.375 Q53.6094,68.375 54.2578,68.5313 Q54.9063,68.6875 55.4688,68.9844 L55.4688,71.7031 Q54.8438,71.125 54.25,70.8516 Q53.6563,70.5781 53.0313,70.5781 Q51.6875,70.5781 51,71.6484 Q50.3125,72.7188 50.3125,74.8125 Q50.3125,76.9063 51,77.9766 Q51.6875,79.0469 53.0313,79.0469 Q53.6563,79.0469 54.25,78.7734 Q54.8438,78.5 55.4688,77.9219 L55.4688,80.6406 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="171" x="66.5" y="79.1543">ExempleDeMultipleInterficie</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="38.5" x2="239.5" y1="91" y2="91"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="38.5" x2="239.5" y1="99" y2="99"/>
+        <!--class interficies.ExempleDolentDeClasseAmbInterficie-->
+        <rect fill="#FEFECE" filter="url(#f1fgifc05zgj6t)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="264" x="276" y="59"/>
+        <ellipse cx="291" cy="75" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M293.9688,80.6406 Q293.3906,80.9375 292.75,81.0859 Q292.1094,81.2344 291.4063,81.2344 Q288.9063,81.2344 287.5859,79.5859 Q286.2656,77.9375 286.2656,74.8125 Q286.2656,71.6875 287.5859,70.0313 Q288.9063,68.375 291.4063,68.375 Q292.1094,68.375 292.7578,68.5313 Q293.4063,68.6875 293.9688,68.9844 L293.9688,71.7031 Q293.3438,71.125 292.75,70.8516 Q292.1563,70.5781 291.5313,70.5781 Q290.1875,70.5781 289.5,71.6484 Q288.8125,72.7188 288.8125,74.8125 Q288.8125,76.9063 289.5,77.9766 Q290.1875,79.0469 291.5313,79.0469 Q292.1563,79.0469 292.75,78.7734 Q293.3438,78.5 293.9688,77.9219 L293.9688,80.6406 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="232" x="305" y="79.1543">ExempleDolentDeClasseAmbInterficie</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="277" x2="539" y1="91" y2="91"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="277" x2="539" y1="99" y2="99"/>
+        <!--class interficies.ExempleInterficie-->
+        <rect fill="#FEFECE" filter="url(#f1fgifc05zgj6t)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="138" x="339" y="167"/>
+        <ellipse cx="354" cy="183" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M349.9219,178.7656 L349.9219,176.6094 L357.3125,176.6094 L357.3125,178.7656 L354.8438,178.7656 L354.8438,186.8438 L357.3125,186.8438 L357.3125,189 L349.9219,189 L349.9219,186.8438 L352.3906,186.8438 L352.3906,178.7656 L349.9219,178.7656 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="106" x="368" y="187.1543">ExempleInterficie</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="340" x2="476" y1="199" y2="199"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="340" x2="476" y1="207" y2="207"/>
+        <!--class interficies.UnaAltraInterficie-->
+        <rect fill="#FEFECE" filter="url(#f1fgifc05zgj6t)" height="48" style="stroke: #A80036; stroke-width: 1.5;" width="140" x="69" y="167"/>
+        <ellipse cx="84" cy="183" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M79.9219,178.7656 L79.9219,176.6094 L87.3125,176.6094 L87.3125,178.7656 L84.8438,178.7656 L84.8438,186.8438 L87.3125,186.8438 L87.3125,189 L79.9219,189 L79.9219,186.8438 L82.3906,186.8438 L82.3906,178.7656 L79.9219,178.7656 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="108" x="98" y="187.1543">UnaAltraInterficie</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="70" x2="208" y1="199" y2="199"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="70" x2="208" y1="207" y2="207"/>
+        <path d="M713.2375,107.1681 C724.0824,112.2371 735.0725,117.9114 745,124 C763.3355,135.2453 782.0391,150.2065 796.9446,163.1381 " fill="none" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="#A80036" points="801.0445,166.7269,796.9071,157.7893,797.2823,163.4336,791.6379,163.8088,801.0445,166.7269" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M597.5453,107.1029 C563.1399,122.3315 518.269,142.1924 480.8222,158.7672 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="483.41,165.2768,462.2882,166.9708,477.7435,152.4748,483.41,165.2768" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M240.7412,104.6615 C246.5653,105.5451 252.3484,106.336 258,107 C311.7742,113.3178 694.3263,104.9275 745,124 C766.7301,132.1788 786.9774,148.5948 801.9159,163.1298 " fill="none" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="#A80036" points="805.5972,166.7785,802.0208,157.6019,802.046,163.2587,796.3892,163.2839,805.5972,166.7785" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M199.034,107.1029 C237.4854,122.5406 287.7935,142.7387 329.4123,159.4481 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="332.1975,153.0231,348.1495,166.9708,326.9814,166.0151,332.1975,153.0231" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M139,107.2373 C139,118.9099 139,133.2806 139,146.8027 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="146.0001,146.8436,139,166.8436,132.0001,146.8436,146.0001,146.8436" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M540.0324,104.635 C546.1005,105.4687 552.1121,106.2622 558,107 C640.8063,117.3762 667.7451,92.4369 745,124 C766.3368,132.7173 786.4421,148.9661 801.4046,163.2785 " fill="none" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="#A80036" points="805.0954,166.8698,801.4345,157.7266,801.5118,163.383,795.8555,163.4603,805.0954,166.8698" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M408,107.2373 C408,118.9099 408,133.2806 408,146.8027 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="415.0001,146.8436,408,166.8436,401.0001,146.8436,415.0001,146.8436" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <!--
+@startuml
+annotation java.lang.Override
+class interficies.ClasseAmbInterficie
+class interficies.ExempleDeMultipleInterficie
+class interficies.ExempleDolentDeClasseAmbInterficie
+interface interficies.ExempleInterficie
+interface interficies.UnaAltraInterficie
+interficies.ClasseAmbInterficie ..> java.lang.Override
+interficies.ClasseAmbInterficie - -|> interficies.ExempleInterficie
+interficies.ExempleDeMultipleInterficie ..> java.lang.Override
+interficies.ExempleDeMultipleInterficie - -|> interficies.ExempleInterficie
+interficies.ExempleDeMultipleInterficie - -|> interficies.UnaAltraInterficie
+interficies.ExempleDolentDeClasseAmbInterficie ..> java.lang.Override
+interficies.ExempleDolentDeClasseAmbInterficie - -|> interficies.ExempleInterficie
+@enduml
+
+PlantUML version 2017.11(Wed Apr 19 18:18:59 CEST 2017)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 10.0.2+13
+Operating System: Linux
+OS Version: 4.15.0-36-generic
+Default Encoding: UTF-8
+Language: es
+Country: ES
+-->
+    </g>
+</svg>

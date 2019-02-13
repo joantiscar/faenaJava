@@ -1,0 +1,19 @@
+Punts que he aplicat:
+
+fitxer Properties per connectar-se a la BD:
+
+A l'arrel del document, hi ha un fitxer config.properties on s'hi han d'apuntar la contrassenya per a conectarse a la base de dades, la base de dades i l'usuari de la base de dades
+
+
+ús de PreparedStatements:
+Casi totes les querys que executo son prepared statements.
+
+
+ús de transaccions:
+
+A la linea 122 del Model.java, hi ha una transacció
+
+
+CRUD de totes les taules:
+
+Nomes tinc una taula.

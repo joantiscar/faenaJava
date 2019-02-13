@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="prova">
+  <ClassDiagramComponents>
+    <Class name="Directiu" package="" visibility="public" xPosition="60.0" yPosition="177.0">
+      <Fields>
+        <Field name="categoria" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Empleat" package="" visibility="public" xPosition="266.0" yPosition="303.0">
+      <Fields>
+        <Field name="souBrut" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="imprimirEmpleat" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Aplicacio" package="" visibility="public" xPosition="376.0" yPosition="33.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrarEmpleats" returnType="void" visibility="public"/>
+        <Method name="mostrarClients" returnType="void" visibility="public"/>
+        <Method name="crudDirectius" returnType="void" visibility="public"/>
+        <Method name="crudEmpleats" returnType="void" visibility="public"/>
+        <Method name="crudEmpreses" returnType="void" visibility="public"/>
+        <Method name="crudClients" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Client" package="" visibility="public" xPosition="60.0" yPosition="375.0">
+      <Fields>
+        <Field name="telefon" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="imprimirClient" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="" visibility="public" xPosition="594.0" yPosition="469.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="dataNaix" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularEdad" returnType="int" visibility="public"/>
+        <Method name="imprimirPersona" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Empresa" package="" visibility="public" xPosition="243.0" yPosition="616.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="a" source="Client" target="Empresa" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="a" source="Empleat" target="Empresa" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <IsRelation name="is" source="Empleat" target="Persona"/>
+    <IsRelation name="is" source="Client" target="Persona"/>
+    <HasRelation name="camp" source="Empleat" target="Aplicacio" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Persones">
+  <ClassDiagramComponents>
+    <Class name="Persona" package="persones" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="astio" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="metodePublic" returnType="void" visibility="public"/>
+        <Method name="metodeProtected" returnType="void" visibility="protected"/>
+        <Method name="metodeSenseres" returnType="void" visibility="package"/>
+        <Method name="metodePrivat" returnType="void" visibility="private"/>
+        <Method name="prova" returnType="void" visibility="package"/>
+        <Method name="getAstio" returnType="int" visibility="public"/>
+        <Method name="setAstio" returnType="void" visibility="public">
+          <Argument type="int" name="astio"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UnaPersona" package="persones" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="persona1" type="Persona" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="prova" returnType="int" visibility="package"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SubPersonForaDelPaquet" package="unAltrePaquet" visibility="public" xPosition="51.0" yPosition="350.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="prova" returnType="void" visibility="package"/>
+        <Method name="metodePublic" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PersonaForaDelPaquet" package="unAltrePaquet" visibility="public" xPosition="336.0" yPosition="252.0">
+      <Fields>
+        <Field name="persona1" type="Persona" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="prova" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="persona1" source="unAltrePaquet.PersonaForaDelPaquet" target="persones.Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="unAltrePaquet.SubPersonForaDelPaquet" target="persones.Persona"/>
+    <HasRelation name="persona1" source="persones.UnaPersona" target="persones.Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -14,17 +14,64 @@ import java.io.Serializable;
  */
 public class Producte implements Serializable {
     
+        private float pvp;
+
+    public static final String PROP_PVP = "pvp";
+
+    /**
+     * Get the value of pvp
+     *
+     * @return the value of pvp
+     */
+    public float getPvp() {
+        return pvp;
+    }
+
+    /**
+     * Set the value of pvp
+     *
+     * @param pvp new value of pvp
+     * @throws java.beans.PropertyVetoException
+     */
+    public void setPvp(float pvp) throws PropertyVetoException {
+        float oldPvp = this.pvp;
+        vetoableChangeSupport.fireVetoableChange(PROP_PVP, oldPvp, pvp);
+        this.pvp = pvp;
+        propertySupport.firePropertyChange(PROP_PVP, oldPvp, pvp);
+    }
+
     
-    private String denominacio;
+    private String denominacio = "";
 
-    private String fabricant;
+    private String fabricant = "";
 
-        private int stockActual;
+    private int stockMinim = 0;
 
-            private int stockMinim;
+        private int stockActual = 0;
 
-    public static final String PROP_STOCKMINIM = "stockMinim";
+    public static final String PROP_STOCKACTUAL = "stockActual";
 
+    /**
+     * Get the value of stockActual
+     *
+     * @return the value of stockActual
+     */
+    public int getStockActual() {
+        return stockActual;
+    }
+
+    /**
+     * Set the value of stockActual
+     *
+     * @param stockActual new value of stockActual
+     */
+    public void setStockActual(int stockActual) {
+        this.stockActual = stockActual;
+        propertySupport.firePropertyChange(PROP_STOCKACTUAL, this.stockMinim, stockActual);
+    }
+
+    
+    
     /**
      * Get the value of stockMinim
      *
@@ -38,15 +85,16 @@ public class Producte implements Serializable {
      * Set the value of stockMinim
      *
      * @param stockMinim new value of stockMinim
-     * @throws java.beans.PropertyVetoException
      */
-    public void setStockMinim(int stockMinim) throws PropertyVetoException {
-        int oldStockMinim = this.stockMinim;
-        vetoableChangeSupport.fireVetoableChange(PROP_STOCKMINIM, oldStockMinim, stockMinim);
+    public void setStockMinim(int stockMinim) {
         this.stockMinim = stockMinim;
-        propertySupport.firePropertyChange(PROP_STOCKMINIM, oldStockMinim, stockMinim);
     }
 
+    /**
+     * Get the value of stockMinim
+     *
+     * @return the value of stockMinim
+     */
     private transient final VetoableChangeSupport vetoableChangeSupport = new VetoableChangeSupport(this);
 
     /**
@@ -68,28 +116,9 @@ public class Producte implements Serializable {
     }
 
         
-    public static final String PROP_STOCKACTUAL = "stockActual";
 
-    /**
-     * Get the value of stockActual
-     *
-     * @return the value of stockActual
-     */
-    public int getStockActual() {
-        return stockActual;
-    }
 
-    /**
-     * Set the value of stockActual
-     *
-     * @param stockActual new value of stockActual
-     */
-    public void setStockActual(int stockActual) {
-        int oldStockActual = this.stockActual;
-        this.stockActual = stockActual;
-        propertySupport.firePropertyChange(PROP_STOCKACTUAL, oldStockActual, stockActual);
-    }
-
+ 
     
     /**
      * Get the value of fabricant
@@ -109,7 +138,7 @@ public class Producte implements Serializable {
         this.fabricant = fabricant;
     }
 
-    private int anyFabricacio;
+    private int anyFabricacio = 0;
 
     /**
      * Get the value of anyFabricacio
@@ -188,7 +217,7 @@ public class Producte implements Serializable {
         this.denominacio = denominacio;
     }
     
-    private String noSerie;
+    private String noSerie = "";
 
     /**
      * Get the value of NoSerie

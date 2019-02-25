@@ -9,7 +9,6 @@ package model;
  *
  * @author dios
  */
-
 import java.io.FileInputStream;
 
 import java.io.IOException;
@@ -23,23 +22,141 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 import java.sql.PreparedStatement;
+import java.beans.*;
+import java.io.Serializable;
 
-public final class Model {
+public final class Model implements Serializable {
 
     static Connection connection = null;
 
     private Collection<Cancion> data;
 
-    static private String database;
-    static private String dbuser;
-    static private String dbpassword;
+    private PropertyChangeSupport propertySupport;
 
-    public Model() throws SQLException, ClassNotFoundException {
-        this(null);
+    private static String database;
+
+    public static final String PROP_DATABASE = "database";
+
+    /**
+     * Get the value of database
+     *
+     * @return the value of database
+     */
+    public String getDatabase() {
+        return database;
     }
 
-    public Model(String databaseName) throws ClassNotFoundException, SQLException {
-        setDatabase(databaseName);
+    /**
+     * Set the value of database
+     *
+     * @param database new value of database
+     * @throws java.beans.PropertyVetoException
+     */
+    public void setDatabase(String database) throws PropertyVetoException {
+        String oldDatabase = this.database;
+        System.out.println(oldDatabase + database);
+        vetoableChangeSupport.fireVetoableChange(PROP_DATABASE, oldDatabase, database);
+        this.database = database;
+    }
+
+    private transient final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    /**
+     * Add PropertyChangeListener.
+     *
+     * @param listener
+     */
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    /**
+     * Remove PropertyChangeListener.
+     *
+     * @param listener
+     */
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
+    }
+
+    private transient final VetoableChangeSupport vetoableChangeSupport = new VetoableChangeSupport(this);
+
+    /**
+     * Add VetoableChangeListener.
+     *
+     * @param listener
+     */
+    public void addVetoableChangeListener(VetoableChangeListener listener) {
+        vetoableChangeSupport.addVetoableChangeListener(listener);
+    }
+
+    /**
+     * Remove VetoableChangeListener.
+     *
+     * @param listener
+     */
+    public void removeVetoableChangeListener(VetoableChangeListener listener) {
+        vetoableChangeSupport.removeVetoableChangeListener(listener);
+    }
+
+    private static String dbuser;
+
+    public static final String PROP_DBUSER = "dbuser";
+
+    /**
+     * Get the value of dbuser
+     *
+     * @return the value of dbuser
+     */
+    public String getDbuser() {
+        return dbuser;
+    }
+
+    /**
+     * Set the value of dbuser
+     *
+     * @param dbuser new value of dbuser
+     * @throws java.beans.PropertyVetoException
+     */
+    public void setDbuser(String dbuser) throws PropertyVetoException {
+        String oldDbuser = this.dbuser;
+        vetoableChangeSupport.fireVetoableChange(PROP_DBUSER, oldDbuser, dbuser);
+        this.dbuser = dbuser;
+    }
+
+    private static String dbpassword;
+
+    public static final String PROP_DBPASSWORD = "dbpassword";
+
+    /**
+     * Get the value of dbpassword
+     *
+     * @return the value of dbpassword
+     */
+    public String getDbpassword() {
+        return dbpassword;
+    }
+
+    /**
+     * Set the value of dbpassword
+     *
+     * @param dbpassword new value of dbpassword
+     * @throws java.beans.PropertyVetoException
+     */
+    public void setDbpassword(String dbpassword) throws PropertyVetoException {
+        String oldDbpassword = this.dbpassword;
+        vetoableChangeSupport.fireVetoableChange(PROP_DBPASSWORD, oldDbpassword, dbpassword);
+        this.dbpassword = dbpassword;
+    }
+
+    public Model() throws SQLException, ClassNotFoundException, PropertyVetoException {
+        propertySupport = new PropertyChangeSupport(this);
+    }
+
+    public Model(String databaseName) throws ClassNotFoundException, SQLException, PropertyVetoException {
+        propertySupport = new PropertyChangeSupport(this);
+
+        prepareDatabase(databaseName);
         loadData();
     }
 
@@ -60,7 +177,7 @@ public final class Model {
         }
     }
 
-    public void setDatabase(String nom) throws SQLException {
+    public void prepareDatabase(String nom) throws SQLException, PropertyVetoException {
         Properties prop = new Properties();
         InputStream input = null;
 
@@ -72,9 +189,9 @@ public final class Model {
             prop.load(input);
 
             // get the property value and print it out
-            Model.database = prop.getProperty("database");
-            Model.dbuser = prop.getProperty("dbuser");
-            Model.dbpassword = prop.getProperty("dbpassword");
+            this.setDatabase(prop.getProperty("database"));
+            this.setDbuser(prop.getProperty("dbuser"));
+            this.setDbpassword(prop.getProperty("dbpassword"));
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -179,11 +296,11 @@ public final class Model {
         return data;
     }
 
-    private static void crearBaseDeDades(String databaseName) throws SQLException {
+    private void crearBaseDeDades(String databaseName) throws SQLException {
 
-        String url = Model.database;
-        String user = Model.dbuser;
-        String password = Model.dbpassword;
+        String url = this.getDatabase();
+        String user = this.getDbuser();
+        String password = this.getDbpassword();
         try {
             connection = DriverManager.getConnection(url, user, password);
             boolean correcte = connection.isValid(50000);

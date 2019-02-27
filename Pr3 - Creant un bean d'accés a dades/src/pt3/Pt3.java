@@ -33,7 +33,7 @@ public class Pt3 {
             m.addPropertyChangeListener(receptor);
             m.addVetoableChangeListener(receptorVetoable);
             m.prepareDatabase("cançons");
-            m.getData();
+            m.loadData();
             Controller c = new Controller(m, v);
             v.setVisible(true);
         } catch (ClassNotFoundException | SQLException | PropertyVetoException ex) {

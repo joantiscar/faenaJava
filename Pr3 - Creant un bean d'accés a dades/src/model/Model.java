@@ -54,7 +54,6 @@ public final class Model implements Serializable {
      */
     public void setDatabase(String database) throws PropertyVetoException {
         String oldDatabase = this.database;
-        System.out.println(oldDatabase + database);
         vetoableChangeSupport.fireVetoableChange(PROP_DATABASE, oldDatabase, database);
         this.database = database;
     }

@@ -20,7 +20,7 @@ public class ReceptorBetador implements VetoableChangeListener {
     @Override
     public void vetoableChange(PropertyChangeEvent evt) throws PropertyVetoException {
         if (Model.PROP_DATABASE.equals(evt.getPropertyName())) {
-            String pattern = "[jbdc:mysql://][\\S]+[:][\\d]+[/]";
+            String pattern = "jdbc:mysql:\\/\\/[\\S]+[:][\\d]+[/]";
             Pattern r = Pattern.compile(pattern);
             System.out.println(evt.getNewValue().toString());
             Matcher m = r.matcher(evt.getNewValue().toString());
@@ -52,11 +52,6 @@ public class ReceptorBetador implements VetoableChangeListener {
             }
 
         }
-//        if ((float) evt.getNewValue() < 0) {
-//            System.out.println("No s'ha pogut canviar la propietat " + evt.getPropertyName());
-//            System.out.println("Motiu: nou valor " + evt.getNewValue() + " es mes petit que 0");
-//            throw new PropertyVetoException("error", evt);
-//        }
     }
 
 }

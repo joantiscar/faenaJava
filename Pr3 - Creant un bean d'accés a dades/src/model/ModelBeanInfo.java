@@ -36,8 +36,11 @@ public class ModelBeanInfo extends SimpleBeanInfo {
         try {
             properties[PROPERTY_data] = new PropertyDescriptor ( "data", model.Model.class, "getData", null ); // NOI18N
             properties[PROPERTY_database] = new PropertyDescriptor ( "database", model.Model.class, "getDatabase", "setDatabase" ); // NOI18N
+            properties[PROPERTY_database].setConstrained ( true );
             properties[PROPERTY_dbpassword] = new PropertyDescriptor ( "dbpassword", model.Model.class, "getDbpassword", "setDbpassword" ); // NOI18N
+            properties[PROPERTY_dbpassword].setConstrained ( true );
             properties[PROPERTY_dbuser] = new PropertyDescriptor ( "dbuser", model.Model.class, "getDbuser", "setDbuser" ); // NOI18N
+            properties[PROPERTY_dbuser].setConstrained ( true );
         }
         catch(IntrospectionException e) {
             e.printStackTrace();

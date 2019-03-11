@@ -9,43 +9,43 @@ package hibernate.entity;
 public class Canciones  implements java.io.Serializable {
 
 
-     private String nom;
-     private String genere;
-     private String data;
+     private String _1_nom;
+     private String _2_genere;
+     private String _3_data;
 
     public Canciones() {
     }
 
 	
-    public Canciones(String nom) {
-        this.nom = nom;
+    public Canciones(String _1_nom) {
+        this._1_nom = _1_nom;
     }
-    public Canciones(String nom, String genere, String data) {
-       this.nom = nom;
-       this.genere = genere;
-       this.data = data;
+    public Canciones(String _1_nom, String _2_genere, String _3_data) {
+       this._1_nom = _1_nom;
+       this._2_genere = _2_genere;
+       this._3_data = _3_data;
     }
    
-    public String getNom() {
-        return this.nom;
+    public String get_1_Nom() {
+        return this._1_nom;
     }
     
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void set_1_Nom(String _1_nom) {
+        this._1_nom = _1_nom;
     }
-    public String getGenere() {
-        return this.genere;
-    }
-    
-    public void setGenere(String genere) {
-        this.genere = genere;
-    }
-    public String getData() {
-        return this.data;
+    public String get_2_Genere() {
+        return this._2_genere;
     }
     
-    public void setData(String data) {
-        this.data = data;
+    public void set_2_Genere(String _2_genere) {
+        this._2_genere = _2_genere;
+    }
+    public String get_3_Data() {
+        return this._3_data;
+    }
+    
+    public void set_3_Data(String _3_data) {
+        this._3_data = _3_data;
     }
 
 

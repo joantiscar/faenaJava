@@ -45,8 +45,8 @@ Contributor(s):
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/canciones?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">Emiliojose1234</property>
+    <property name="hibernate.connection.username">debian-sys-maint</property>
+    <property name="hibernate.connection.password">3oVPAN3HgLOQGRfG</property>
     <mapping resource="hibernate/entity/Canciones.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

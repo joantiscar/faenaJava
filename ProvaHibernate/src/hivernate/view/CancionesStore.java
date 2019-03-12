@@ -13,10 +13,6 @@ package hivernate.view;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import hibernate.util.HibernateUtil;
 import hibernate.entity.Canciones;
 
 /**
@@ -29,21 +25,7 @@ public class CancionesStore extends javax.swing.JFrame {
     public CancionesStore() {
         initComponents();
     }
-    private static String QUERY_BASED_ON_NAME = "from Canciones a where a._1_Nom like '";
-    private static String QUERY_BASED_ON_GENERE = "from Canciones a where a._2_Genere like '";
-    private static String QUERY_BASED_ON_DATA = "from Canciones a where a._3_Data like '";
-
-    private void runQueryBasedOnNom() {
-        executeHQLQuery(QUERY_BASED_ON_NAME + nameTextField.getText() + "%'");
-    }
-
-    private void runQueryBasedOnGenere() {
-        executeHQLQuery(QUERY_BASED_ON_GENERE + genereTextField.getText() + "%'");
-    }
     
-    private void runQueryBasedOnData() {
-        executeHQLQuery(QUERY_BASED_ON_DATA + dataTextField.getText() + "%'");
-    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -150,15 +132,16 @@ public class CancionesStore extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(queryButton)
-                    .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
                         .addComponent(dataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(genereTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(genereTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(queryButton)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -168,14 +151,7 @@ public class CancionesStore extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void queryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryButtonActionPerformed
-        if (!nameTextField.getText().trim().equals("")) {
-            runQueryBasedOnNom();
-        } else if (!genereTextField.getText().trim().equals("")) {
-            runQueryBasedOnGenere();
-        } else if (!dataTextField.getText().trim().equals("")) {
-            runQueryBasedOnData();
-        }
-
+   
     }//GEN-LAST:event_queryButtonActionPerformed
 
     private void dataTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataTextFieldActionPerformed
@@ -189,14 +165,14 @@ public class CancionesStore extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new CancionesStore().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//
+//            public void run() {
+//                new CancionesStore().setVisible(true);
+//            }
+//        });
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField dataTextField;
     private javax.swing.JTextField genereTextField;
@@ -210,21 +186,9 @@ public class CancionesStore extends javax.swing.JFrame {
     private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
 
-    private void executeHQLQuery(String hql) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Query q = session.createQuery(hql);
-            List resultList = q.list();
-            displayResult(resultList);
-            session.getTransaction().commit();
-        } catch (HibernateException he) {
-            he.printStackTrace();
-        }
 
-    }
 
-    private void displayResult(List resultList) {
+    public void displayResult(List resultList) {
         Vector<String> tableHeaders = new Vector<String>();
         Vector tableData = new Vector();
         tableHeaders.add("Nom");
@@ -242,4 +206,45 @@ public class CancionesStore extends javax.swing.JFrame {
         resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
 
     }
+
+    public javax.swing.JTextField getDataTextField() {
+        return dataTextField;
+    }
+
+    public void setDataTextField(javax.swing.JTextField dataTextField) {
+        this.dataTextField = dataTextField;
+    }
+
+    public javax.swing.JTextField getGenereTextField() {
+        return genereTextField;
+    }
+
+    public void setGenereTextField(javax.swing.JTextField genereTextField) {
+        this.genereTextField = genereTextField;
+    }
+
+    public javax.swing.JTextField getNameTextField() {
+        return nameTextField;
+    }
+
+    public void setNameTextField(javax.swing.JTextField nameTextField) {
+        this.nameTextField = nameTextField;
+    }
+
+    public javax.swing.JTable getResultTable() {
+        return resultTable;
+    }
+
+    public void setResultTable(javax.swing.JTable resultTable) {
+        this.resultTable = resultTable;
+    }
+
+    public javax.swing.JButton getQueryButton() {
+        return queryButton;
+    }
+
+    public void setQueryButton(javax.swing.JButton queryButton) {
+        this.queryButton = queryButton;
+    }
+    
 }

@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/becari/Code/joantiscar/faenaJava/ProvaHibernate/src/model/Model.java</file>
+            <file>file:/home/becari/Code/joantiscar/faenaJava/ProvaHibernate/src/hibernate.cfg.xml</file>
+            <file>file:/home/becari/Code/joantiscar/faenaJava/ProvaHibernate/src/hibernate/util/HibernateUtil.java</file>
+            <file>file:/home/becari/Code/joantiscar/faenaJava/ProvaHibernate/src/ProvaHibernate/ProvaHibernate.java</file>
+            <file>file:/home/becari/Code/joantiscar/faenaJava/ProvaHibernate/src/hivernate/view/CancionesStore.java</file>
+            <file>file:/home/becari/Code/joantiscar/faenaJava/ProvaHibernate/src/controller/Controller.java</file>
+        </group>
     </open-files>
 </project-private>

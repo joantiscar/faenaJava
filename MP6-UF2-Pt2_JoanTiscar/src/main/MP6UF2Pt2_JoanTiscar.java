@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mp6.uf2.pt2_joantiscar;
+package main;
 
+import controller.Controller;
 import java.sql.SQLException;
+import model.Model;
+import view.CancionesStore;
 
 /**
  *
@@ -26,6 +29,9 @@ public class MP6UF2Pt2_JoanTiscar {
             System.out.println("Error al llegir les dades.");
             System.exit(0);
         }
+
+//        CancionesDAO dao = new CancionesDAO();
+//        List<Canciones> list = dao.selectAll();
     }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mp6.uf2.pt2_joantiscar;
+package main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

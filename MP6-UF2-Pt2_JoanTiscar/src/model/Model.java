@@ -9,21 +9,19 @@ package model;
  *
  * @author dios
  */
-import hibernate.entity.Canciones;
-import hibernate.util.HibernateUtil;
+
 import java.util.Collection;
 import java.sql.SQLException;
 import java.io.Serializable;
 import java.util.List;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import main.CancionesDAO;
+
 
 public final class Model implements Serializable {
 
 
     private Collection<Canciones> data;
-
+    CancionesDAO dao = new CancionesDAO();
     
     private static final String QUERY_BASED_ON_NAME = "from Canciones a where a._1_Nom like '";
     private static final String QUERY_BASED_ON_GENERE = "from Canciones a where a._2_Genere like '";
@@ -31,34 +29,20 @@ public final class Model implements Serializable {
     private static final String QUERY_INDEX = "from Canciones";
 
     public List runQueryBasedOnNom(String filter) {
-        return executeHQLQuery(QUERY_BASED_ON_NAME + filter + "%'");
+        return dao.selectAll();
     }
 
     public List runQueryBasedOnGenere(String filter) {
-        return executeHQLQuery(QUERY_BASED_ON_GENERE + filter + "%'");
+        return dao.selectAll();
     }
     
     public List runQueryBasedOnData(String filter) {
-        return executeHQLQuery(QUERY_BASED_ON_DATA + filter + "%'");
+        return dao.selectAll();
     }
     
-     private List executeHQLQuery(String hql) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Query q = session.createQuery(hql);
-            List resultList = q.list();
-            session.getTransaction().commit();
-            return resultList;
-        } catch (HibernateException he) {
-            he.printStackTrace();
-            return null;
-        }
-
-    }
 //
     public List getData() throws SQLException {
-        return executeHQLQuery(QUERY_INDEX);
+        return dao.selectAll();
     }
 //
 //    public void addData(String nom, Object cat, String dat) throws SQLException {

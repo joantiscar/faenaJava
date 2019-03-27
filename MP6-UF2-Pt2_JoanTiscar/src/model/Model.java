@@ -10,11 +10,11 @@ package model;
  * @author dios
  */
 
+import main.CancionesDAO;
 import java.util.Collection;
 import java.sql.SQLException;
 import java.io.Serializable;
 import java.util.List;
-import main.CancionesDAO;
 
 
 public final class Model implements Serializable {
@@ -29,15 +29,15 @@ public final class Model implements Serializable {
     private static final String QUERY_INDEX = "from Canciones";
 
     public List runQueryBasedOnNom(String filter) {
-        return dao.selectAll();
+        return dao.getByName("%" + filter + "%");
     }
 
     public List runQueryBasedOnGenere(String filter) {
-        return dao.selectAll();
+        return dao.getByGenere("%" + filter + "%");
     }
     
     public List runQueryBasedOnData(String filter) {
-        return dao.selectAll();
+        return dao.getByData("%" + filter + "%");
     }
     
 //
@@ -50,13 +50,25 @@ public final class Model implements Serializable {
 //
 //    }
 //
-//    public void modifyData(Object obj, String nom, Object genere, String dat) throws SQLException {
-//  
-//    }
-//
-//    public void removeData(Object obj) throws SQLException {
-//    
-//    }
+    public void runDeleteQuery(String name) throws SQLException {
+    dao.delete(name);
+    }
+    
+    public void runInsertQuery(String name, String genere, String data) throws SQLException {
+        Canciones cancion = new Canciones();
+        cancion.set_1_Nom(name);
+        cancion.set_2_Genere(genere);
+        cancion.set_3_Data(data);
+        dao.insert(cancion);
+    }
+    
+    public void runModifyQuery(String originalName, String name, String genere, String data) throws SQLException {
+        Canciones cancion = new Canciones();
+        cancion.set_1_Nom(name);
+        cancion.set_2_Genere(genere);
+        cancion.set_3_Data(data);
+        dao.update(originalName, cancion);
+    }
 //
 //    public Collection<Canciones> getData() {
 //        return data;

@@ -8,7 +8,7 @@ package main;
 import controller.Controller;
 import java.sql.SQLException;
 import model.Model;
-import view.CancionesStore;
+import view.Vista;
 
 /**
  *
@@ -20,7 +20,7 @@ public class MP6UF2Pt2_JoanTiscar {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CancionesStore v = new CancionesStore();
+        Vista v = new Vista();
         try {
             Model m = new Model();
             Controller c = new Controller(m, v);

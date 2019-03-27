@@ -7,6 +7,7 @@ package main;
 
 import java.util.List;
 import model.Canciones;
+import model.Canciones;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -24,25 +25,44 @@ public class CancionesDAO {
     
     @SuppressWarnings("unchecked")
     public List<Canciones> selectAll() {
-        SqlSession session = sqlSessionFactory.openSession();
-        try {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
             List<Canciones> list = session.selectList("Canciones.getAll");
             return list;
-        } finally {
-        session.close();
-    }
-    }
-    
-    public Canciones getById(int id) {
-        try (SqlSession session = sqlSessionFactory.openSession()) {
-            Canciones cancion = (Canciones) session.selectOne("Canciones.getById", id);
-            return cancion;
         }
     }
     
-     public void update(Canciones cancion) {
+    public List getByName(String name) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            session.update("Canciones.update", cancion);
+            List<Canciones> canciones = session.selectList("Canciones.getByName", name);
+            System.out.println(canciones);
+            return canciones;
+        }
+    }
+    
+    public List getByGenere(String genere) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            List<Canciones> canciones = session.selectList("Canciones.getByGenere", genere);
+            System.out.println(canciones);
+            return canciones;
+        }
+    }
+    
+    public List getByData(String data) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            List<Canciones> canciones = session.selectList("Canciones.getByData", data);
+            System.out.println(canciones);
+            return canciones;
+        }
+    }
+    
+     public void update(String cancionOriginal, Canciones canciones) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            Cancion cancion = new Cancion();
+            cancion.set_1_Nom(canciones.get_1_Nom());
+            cancion.set_2_Genere(canciones.get_2_Genere());
+            cancion.set_3_Data(canciones.get_3_Data());
+            cancion.setNomOriginal(cancionOriginal);
+            session.update("Canciones.update", (Object) cancion);
             session.commit();
         }
     }
@@ -50,14 +70,28 @@ public class CancionesDAO {
      public void insert(Canciones cancion) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             session.insert("Canciones.insert", cancion);
+            System.out.println("astio");
             session.commit();
         }
     }
      
-     public void delete(int id) {
+     public void delete(String name) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            session.delete("Canciones.deleteById", id);
+            session.delete("Canciones.deleteByName", name);
             session.commit();
         }
     }
+}
+class Cancion extends Canciones{
+    private String nomOriginal;
+
+    public String getNomOriginal() {
+        return nomOriginal;
+    }
+
+    public void setNomOriginal(String nomOriginal) {
+        this.nomOriginal = nomOriginal;
+    }
+    
+    
 }

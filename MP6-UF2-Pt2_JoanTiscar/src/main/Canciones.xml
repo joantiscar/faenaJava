@@ -14,13 +14,28 @@
     <select id="getAll" resultMap="result">
         SELECT * FROM canciones.canciones;
     </select>
-<!--    <select id="getByNom" resultMap="result">
-        SELECT * FROM canciones WHERE _1_Nom like '%{nom}%';
+    <select id="getByName" parameterType="String" resultMap="result">
+        SELECT * FROM canciones WHERE _1_Nom like #{name};
     </select>
-    <select id="getByGenere" resultMap="result">
-        SELECT * FROM canciones WHERE _2_Genere like '%{genere}%';
+   <select id="getByGenere" parameterType="String" resultMap="result">
+        SELECT * FROM canciones WHERE _2_Genere like #{genere};
     </select>
-    <select id="getByData" resultMap="result">
-        SELECT * FROM canciones WHERE _3_Data like '%{data}%';
-    </select>-->
+    <select id="getByData" parameterType="String" resultMap="result">
+        SELECT * FROM canciones WHERE _3_Data like #{data};
+    </select>
+    <insert id="insert" parameterType="model.Canciones">
+        INSERT INTO canciones (_1_Nom, _2_Genere, _3_Data)
+        VALUES (#{_1_Nom}, #{_2_Genere}, #{_3_Data});
+    </insert>
+    <delete id="deleteByName" parameterType="String">
+        DELETE FROM canciones WHERE _1_Nom = #{name}
+    </delete>
+    <update id="update" parameterType="Object">
+        UPDATE canciones
+        SET
+        _1_Nom = #{_1_Nom},
+        _2_Genere = #{_2_Genere},
+        _3_Data = #{_3_Data}
+        WHERE _1_nom = #{nomOriginal};
+    </update>
 </mapper>

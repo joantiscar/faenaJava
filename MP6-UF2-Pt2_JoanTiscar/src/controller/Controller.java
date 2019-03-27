@@ -5,7 +5,7 @@
  */
 package controller;
 
-import view.CancionesStore;
+import view.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -26,9 +26,9 @@ import utilscontroller.Utils;
 public class Controller {
 
     private Model m;
-    private CancionesStore v;
+    private Vista v;
 
-    public Controller(Model m, CancionesStore v) throws SQLException {
+    public Controller(Model m, Vista v) throws SQLException {
         this.m = m;
         this.v = v;
         control();
@@ -59,6 +59,47 @@ public class Controller {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            if (e.getSource().equals(v.getDeleteButton())) {
+
+                    try {
+                       
+                                
+                    m.runDeleteQuery(v.getResultTable().getModel().getValueAt(v.getResultTable().getSelectedRow(), 0).toString());
+                
+                    v.displayResult(m.getData());
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (e.getSource().equals(v.getInsertButton())) {
+
+                                        System.out.println("astio");
+                if (!v.getNameTextField().getText().trim().equals("")) {
+                    try {
+                        
+                    m.runInsertQuery(v.getNameTextField().getText().trim(), v.getGenereTextField().getText().trim(), v.getDataTextField().getText().trim());
+                
+                    v.displayResult(m.getData());
+                } catch (SQLException ex) {
+                        System.out.println("astioooo");
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            }
+            if (e.getSource().equals(v.getModifyButton())) {
+
+                if (!v.getNameTextField().getText().trim().equals("")) {
+                    try {
+                        
+                    m.runModifyQuery(v.getResultTable().getModel().getValueAt(v.getResultTable().getSelectedRow(), 0).toString(), 
+                            v.getNameTextField().getText().trim(), v.getGenereTextField().getText().trim(), v.getDataTextField().getText().trim());
+                
+                    v.displayResult(m.getData());
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            }
         };
 
         //Creació de Adapters
@@ -73,6 +114,9 @@ public class Controller {
         //Associem el window adapter a la vista
         v.addWindowListener(windowAdapter);
         v.getQueryButton().addActionListener(actionListener);
+        v.getInsertButton().addActionListener(actionListener);
+        v.getDeleteButton().addActionListener(actionListener);
+        v.getModifyButton().addActionListener(actionListener);
 
     }
 

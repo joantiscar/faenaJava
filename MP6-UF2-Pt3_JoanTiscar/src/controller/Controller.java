@@ -17,7 +17,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableColumn;
+import model.Album;
 import model.Cancion;
 import model.Model;
 
@@ -46,6 +49,49 @@ public class Controller {
                 v.albumsDisplayResult(m.indexAlbums());
 
             }
+            
+            if (e.getSource().equals(v.getCancionInsertButton())) {
+                m.createCancion(v.getCancionNameTextField().getText().trim(), Integer.parseInt(v.getCancionDuracioTextField().getText().trim()));
+                v.cancionesDisplayResult(m.getCancionesFromCurrentAlbum());
+
+            }
+            
+             if (e.getSource().equals(v.getAlbumDeleteButton())) {
+                int row = v.getAlbumResultTable().getSelectedRow();
+                             Album albumABorrar = new Album();
+
+             albumABorrar.setNom(v.getAlbumResultTable().getModel().getValueAt(row, 0).toString());
+             albumABorrar.setArtista(v.getAlbumResultTable().getModel().getValueAt(row, 1).toString()); 
+             albumABorrar.setData(v.getAlbumResultTable().getModel().getValueAt(row, 2).toString());
+           
+             m.deleteAlbum(albumABorrar);
+             v.albumsDisplayResult(m.indexAlbums());
+
+            }
+            
+            if (e.getSource().equals(v.getAlbumModifyButton())) {
+                int row = v.getAlbumResultTable().getSelectedRow();
+                             Album albumAModificar = new Album();
+
+             albumAModificar.setNom(v.getAlbumResultTable().getModel().getValueAt(row, 0).toString());
+             albumAModificar.setArtista(v.getAlbumResultTable().getModel().getValueAt(row, 1).toString()); 
+             albumAModificar.setData(v.getAlbumResultTable().getModel().getValueAt(row, 2).toString());
+           
+             m.editAlbum(albumAModificar, v.getAlbumNameTextField().getText().trim(), v.getAlbumArtistaTextField().getText().trim(), v.getAlbumDataTextField().getText().trim());
+             v.albumsDisplayResult(m.indexAlbums());
+
+            }
+             
+            if (e.getSource().equals(v.getAlbumShowCancionesButton())) {
+                 
+                int row = v.getAlbumResultTable().getSelectedRow();
+             String nom = v.getAlbumResultTable().getModel().getValueAt(row, 0).toString();
+             String artista = v.getAlbumResultTable().getModel().getValueAt(row, 1).toString();
+             String data = v.getAlbumResultTable().getModel().getValueAt(row, 2).toString();
+             v.cancionesDisplayResult(m.indexCancionesPerAlbum(nom, artista, data));
+
+
+            }
         };
 
         //Creació de Adapters
@@ -60,18 +106,6 @@ public class Controller {
 
         };
         
-        MouseAdapter mouseAdapter = new MouseAdapter(){
-         public void mouseClicked(MouseEvent e) {
-             
-             int row = v.getResultTable().getSelectedRow();
-             System.out.println(row);
-             
-             String nom = v.getAlbumResultTable().getModel().getValueAt(row, 0).toString();
-             String artista = v.getAlbumResultTable().getModel().getValueAt(row, 1).toString();
-             String data = v.getAlbumResultTable().getModel().getValueAt(row, 2).toString();
-             v.cancionesDisplayResult(m.indexCancionesPerAlbum(nom, artista, data));
-         }                
-      };
         //Associem el window adapter a la vista
         v.addWindowListener(windowAdapter);
         v.getCancionDeleteButton().addActionListener(actionListener);
@@ -80,8 +114,7 @@ public class Controller {
         v.getAlbumDeleteButton().addActionListener(actionListener);
         v.getAlbumInsertButton().addActionListener(actionListener);
         v.getAlbumModifyButton().addActionListener(actionListener);
-        v.getAlbumResultTable().addMouseListener(mouseAdapter);
-
+        v.getAlbumShowCancionesButton().addActionListener(actionListener);
 
 
     }

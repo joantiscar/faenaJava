@@ -61,6 +61,7 @@ public class Vista extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         albumResultTable = new javax.swing.JTable();
         albumDataTextField = new javax.swing.JTextField();
+        albumShowCancionesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,6 +161,8 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        albumShowCancionesButton.setText("Mostrar Cançons");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,13 +186,12 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(cancionDuracioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cancionInsertButton)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(cancionInsertButton)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cancionModifyButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cancionDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                        .addComponent(cancionDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,12 +211,14 @@ public class Vista extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(albumDataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(albumModifyButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(albumInsertButton))
+                                .addComponent(albumShowCancionesButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(albumModifyButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(142, 142, 142)
                                 .addComponent(jLabel6)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(albumInsertButton)
                         .addGap(18, 18, 18)
                         .addComponent(albumDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))))
@@ -228,7 +232,8 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(albumDataTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(albumModifyButton))
+                        .addComponent(albumModifyButton)
+                        .addComponent(albumShowCancionesButton))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(albumDeleteButton)
@@ -305,6 +310,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton albumInsertButton;
     private javax.swing.JButton albumModifyButton;
     private javax.swing.JTable albumResultTable;
+    private javax.swing.JButton albumShowCancionesButton;
     private javax.swing.JButton cancionDeleteButton;
     private javax.swing.JTextField cancionDuracioTextField;
     private javax.swing.JButton cancionInsertButton;
@@ -464,6 +470,14 @@ public class Vista extends javax.swing.JFrame {
 
     public void setResultTable(JTable resultTable) {
         this.resultTable = resultTable;
+    }
+
+    public JButton getAlbumShowCancionesButton() {
+        return albumShowCancionesButton;
+    }
+
+    public void setAlbumShowCancionesButton(JButton albumShowCancionesButton) {
+        this.albumShowCancionesButton = albumShowCancionesButton;
     }
     
 

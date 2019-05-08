@@ -29,7 +29,6 @@ public final class Model implements Serializable {
         try {
             // Obrim o creem el fitxer qbe.yap
             File file = new File(filename);
-            file.delete();
             db = Db4oEmbedded.openFile(filename);
         } catch (Exception e) {
             System.out.println("Error!: \n" + e);
@@ -38,7 +37,7 @@ public final class Model implements Serializable {
     }
 
     public void closeDatabase() {
-        db.close();
+        this.db.close();
     }
 
     public List indexAlbums() {
@@ -66,16 +65,15 @@ public final class Model implements Serializable {
     }
 
     public void editAlbum(Album albumOriginal, String nom, String artista, String data) {
-        
-        
-         ObjectSet albumsPossibles = db.queryByExample(albumOriginal);
+
+        ObjectSet albumsPossibles = db.queryByExample(albumOriginal);
 
         Album album = null;
         for (Object objecte : albumsPossibles) {
             album = (Album) objecte;
             break;
         }
-                
+
         album.setNom(nom);
         album.setArtista(artista);
         album.setData(data);
@@ -93,7 +91,7 @@ public final class Model implements Serializable {
             aBorrar = (Album) objecte;
             break;
         }
-        
+
         db.delete(aBorrar);
 
     }
@@ -104,7 +102,14 @@ public final class Model implements Serializable {
 
     }
 
-    public void editCancion(String nom, int duracio, Cancion cancion) {
+    public void editCancion(String nom, int duracio, Cancion cancionOriginal) {
+        ObjectSet cancionesPossibles = db.queryByExample(cancionOriginal);
+
+        Cancion cancion = null;
+        for (Object objecte : cancionesPossibles) {
+            cancion = (Cancion) objecte;
+            break;
+        }
         cancion.setNom(nom);
         cancion.setDuracio(duracio);
 
@@ -112,8 +117,15 @@ public final class Model implements Serializable {
 
     }
 
-    public void deleteCancion(Cancion cancion) {
+    public void deleteCancion(Cancion cancionABorrar) {
+        cancionABorrar.setAlbum(currentAlbum);
+        ObjectSet cancionesPossibles = db.queryByExample(cancionABorrar);
 
+        Cancion cancion = null;
+        for (Object objecte : cancionesPossibles) {
+            cancion = (Cancion) objecte;
+            break;
+        }
         db.delete(cancion);
 
     }

@@ -41,7 +41,7 @@ public class Controller {
 
     public void control() throws SQLException {
 
-            v.albumsDisplayResult(m.indexAlbums());
+        v.albumsDisplayResult(m.indexAlbums());
         // Action Listener: farà la majoria d'accions del programa
         ActionListener actionListener = (ActionEvent e) -> {
             if (e.getSource().equals(v.getAlbumInsertButton())) {
@@ -49,65 +49,82 @@ public class Controller {
                 v.albumsDisplayResult(m.indexAlbums());
 
             }
-            
+
             if (e.getSource().equals(v.getCancionInsertButton())) {
                 m.createCancion(v.getCancionNameTextField().getText().trim(), Integer.parseInt(v.getCancionDuracioTextField().getText().trim()));
                 v.cancionesDisplayResult(m.getCancionesFromCurrentAlbum());
 
             }
-            
-             if (e.getSource().equals(v.getAlbumDeleteButton())) {
-                int row = v.getAlbumResultTable().getSelectedRow();
-                             Album albumABorrar = new Album();
 
-             albumABorrar.setNom(v.getAlbumResultTable().getModel().getValueAt(row, 0).toString());
-             albumABorrar.setArtista(v.getAlbumResultTable().getModel().getValueAt(row, 1).toString()); 
-             albumABorrar.setData(v.getAlbumResultTable().getModel().getValueAt(row, 2).toString());
-           
-             m.deleteAlbum(albumABorrar);
-             v.albumsDisplayResult(m.indexAlbums());
+            if (e.getSource().equals(v.getAlbumDeleteButton())) {
+                int row = v.getAlbumResultTable().getSelectedRow();
+                Album albumABorrar = new Album();
+
+                albumABorrar.setNom(v.getAlbumResultTable().getModel().getValueAt(row, 0).toString());
+                albumABorrar.setArtista(v.getAlbumResultTable().getModel().getValueAt(row, 1).toString());
+                albumABorrar.setData(v.getAlbumResultTable().getModel().getValueAt(row, 2).toString());
+
+                m.deleteAlbum(albumABorrar);
+                v.albumsDisplayResult(m.indexAlbums());
 
             }
-            
+
             if (e.getSource().equals(v.getAlbumModifyButton())) {
                 int row = v.getAlbumResultTable().getSelectedRow();
-                             Album albumAModificar = new Album();
+                Album albumAModificar = new Album();
 
-             albumAModificar.setNom(v.getAlbumResultTable().getModel().getValueAt(row, 0).toString());
-             albumAModificar.setArtista(v.getAlbumResultTable().getModel().getValueAt(row, 1).toString()); 
-             albumAModificar.setData(v.getAlbumResultTable().getModel().getValueAt(row, 2).toString());
-           
-             m.editAlbum(albumAModificar, v.getAlbumNameTextField().getText().trim(), v.getAlbumArtistaTextField().getText().trim(), v.getAlbumDataTextField().getText().trim());
-             v.albumsDisplayResult(m.indexAlbums());
+                albumAModificar.setNom(v.getAlbumResultTable().getModel().getValueAt(row, 0).toString());
+                albumAModificar.setArtista(v.getAlbumResultTable().getModel().getValueAt(row, 1).toString());
+                albumAModificar.setData(v.getAlbumResultTable().getModel().getValueAt(row, 2).toString());
+
+                m.editAlbum(albumAModificar, v.getAlbumNameTextField().getText().trim(), v.getAlbumArtistaTextField().getText().trim(), v.getAlbumDataTextField().getText().trim());
+                v.albumsDisplayResult(m.indexAlbums());
 
             }
-             
+
             if (e.getSource().equals(v.getAlbumShowCancionesButton())) {
-                 
+
                 int row = v.getAlbumResultTable().getSelectedRow();
-             String nom = v.getAlbumResultTable().getModel().getValueAt(row, 0).toString();
-             String artista = v.getAlbumResultTable().getModel().getValueAt(row, 1).toString();
-             String data = v.getAlbumResultTable().getModel().getValueAt(row, 2).toString();
-             v.cancionesDisplayResult(m.indexCancionesPerAlbum(nom, artista, data));
+                String nom = v.getAlbumResultTable().getModel().getValueAt(row, 0).toString();
+                String artista = v.getAlbumResultTable().getModel().getValueAt(row, 1).toString();
+                String data = v.getAlbumResultTable().getModel().getValueAt(row, 2).toString();
+                v.cancionesDisplayResult(m.indexCancionesPerAlbum(nom, artista, data));
 
+            }
+            
+             if (e.getSource().equals(v.getCancionModifyButton())) {
+                int row = v.getResultTable().getSelectedRow();
+                Cancion cancionAModificar = new Cancion();
+
+                cancionAModificar.setNom(v.getResultTable().getModel().getValueAt(row, 0).toString());
+                cancionAModificar.setDuracio(Integer.parseInt(v.getResultTable().getModel().getValueAt(row, 1).toString()));
+
+                m.editCancion(v.getCancionNameTextField().getText().trim(), Integer.parseInt(v.getCancionDuracioTextField().getText().trim()), cancionAModificar);
+                v.cancionesDisplayResult(m.getCancionesFromCurrentAlbum());
+
+            }
+             if (e.getSource().equals(v.getCancionDeleteButton())) {
+                int row = v.getResultTable().getSelectedRow();
+                Cancion cancionABorrar = new Cancion();
+
+                cancionABorrar.setNom(v.getResultTable().getModel().getValueAt(row, 0).toString());
+                cancionABorrar.setDuracio(Integer.parseInt(v.getResultTable().getModel().getValueAt(row, 1).toString()));
+
+                m.deleteCancion(cancionABorrar);
+                v.cancionesDisplayResult(m.getCancionesFromCurrentAlbum());
 
             }
         };
 
-        //Creació de Adapters
-        // Window Adapter
-        WindowAdapter windowAdapter = new WindowAdapter() {
+        v.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
-            public void windowClosed(WindowEvent e) {
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+
                 m.closeDatabase();
-
                 System.exit(0);
-            }
 
-        };
-        
-        //Associem el window adapter a la vista
-        v.addWindowListener(windowAdapter);
+            }
+        });
         v.getCancionDeleteButton().addActionListener(actionListener);
         v.getCancionInsertButton().addActionListener(actionListener);
         v.getCancionModifyButton().addActionListener(actionListener);
@@ -115,7 +132,6 @@ public class Controller {
         v.getAlbumInsertButton().addActionListener(actionListener);
         v.getAlbumModifyButton().addActionListener(actionListener);
         v.getAlbumShowCancionesButton().addActionListener(actionListener);
-
 
     }
 

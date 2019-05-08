@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 
 import model.Model;
 import vista.Vista;
@@ -33,27 +34,20 @@ public class Controller {
     }
 
     public void fillTree(){
+        List databases = m.getDatabases();
+    }
     
     public void control() {
 
         ActionListener actionListener = (ActionEvent e) -> {
-            if (e.getSource().equals(v)) {
-             
-            }
+//            if (e.getSource().equals(v.getDatabasesTree().)) {
+//             
+//            }
 
             
         };
 
-        v.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-
-                System.exit(0);
-
-            }
-        });
-
-        v.getAlbumShowCancionesButton().addActionListener(actionListener);
+//        v.getAlbumShowCancionesButton().addActionListener(actionListener);
 
     }
 

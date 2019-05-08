@@ -43,8 +43,11 @@ public class Model {
         database = mongoClient.getDatabase(nom);
     }
 
-    public List getCollections() {
-        MongoIterable<String> collections = database.listCollectionNames();
+    public List getCollections(String database) {
+        
+        MongoDatabase db = mongoClient.getDatabase(database);
+        
+        MongoIterable<String> collections = db.listCollectionNames();
 
         List<String> collectionsNoms = new ArrayList();
 

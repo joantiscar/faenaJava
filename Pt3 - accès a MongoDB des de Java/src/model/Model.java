@@ -28,13 +28,18 @@ public class Model {
     MongoCollection<Document> collection;
     Document document;
 
-    public List getDatabases() {
+    public String[] getDatabases() {
         MongoIterable<String> databases = mongoClient.listDatabaseNames();
-
-        List<String> databaseNoms = new ArrayList();
-
+        int cont = 0;
         for (String s : databases) {
-            databaseNoms.add(s);
+            cont++;
+        }
+        String[] databaseNoms = new String[cont];
+        databases = mongoClient.listDatabaseNames();
+        cont = 0;
+        for (String s : databases) {
+            databaseNoms[cont] = s;
+            cont++;
         }
         return databaseNoms;
     }
@@ -43,18 +48,25 @@ public class Model {
         database = mongoClient.getDatabase(nom);
     }
 
-    public List getCollections(String database) {
+    public String[] getCollections(String database) {
         
         MongoDatabase db = mongoClient.getDatabase(database);
         
         MongoIterable<String> collections = db.listCollectionNames();
 
-        List<String> collectionsNoms = new ArrayList();
-
+        int cont = 0;
         for (String s : collections) {
-            collectionsNoms.add(s);
+            cont++;
+        }
+        
+        String[] collectionsNoms = new String[cont];
+        cont = 0;
+        for (String s : collections) {
+            collectionsNoms[cont] = s;
+            cont++;
         }
         return collectionsNoms;
+        
     }
 
     public void setCollection(String nom) {

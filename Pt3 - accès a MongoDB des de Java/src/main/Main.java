@@ -5,9 +5,11 @@
  */
 package main;
 
+import controller.Controller;
 import java.util.List;
 import model.Model;
 import org.bson.Document;
+import vista.Vista;
 
 /**
  *
@@ -22,15 +24,22 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        
+//        
             Model model = new Model();
-            model.setDatabase("consultes");
-            model.setCollection("users");
-            List<Document> documents = model.indexDocuments();
-            
-            for (Document doc : documents) {
-                System.out.println(doc);
-            }
+            Vista vista = new Vista();
+//            
+            Controller c = new Controller(model, vista);
+            vista.setVisible(true);
+
+  
+//            Model model = new Model();
+//            model.setDatabase("consultes");
+//            model.setCollection("users");
+//            List<Document> documents = model.indexDocuments();
+//            
+//            for (Document doc : documents) {
+//                System.out.println(doc);
+//            }
             
     }
 

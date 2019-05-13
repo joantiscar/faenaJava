@@ -49,16 +49,16 @@ public class Model {
     }
 
     public String[] getCollections(String database) {
-        
+
         MongoDatabase db = mongoClient.getDatabase(database);
-        
+
         MongoIterable<String> collections = db.listCollectionNames();
 
         int cont = 0;
         for (String s : collections) {
             cont++;
         }
-        
+
         String[] collectionsNoms = new String[cont];
         cont = 0;
         for (String s : collections) {
@@ -66,14 +66,14 @@ public class Model {
             cont++;
         }
         return collectionsNoms;
-        
+
     }
 
     public void setCollection(String nom) {
         collection = database.getCollection(nom);
     }
 
-    public List indexDocuments() {
+    public List<Document> indexDocuments() {
 
         List<Document> documents = new ArrayList();
 
@@ -83,13 +83,13 @@ public class Model {
         return documents;
     }
 
-    public void setDocument(String id) {
+    public void setDocument(Object id) {
         BasicDBObject query = new BasicDBObject();
         query.put("_id", id);
         document = collection.find(query).first();
     }
 
-    public List getKeysFromDocument(Document document) {
+    public String[] getKeys() {
 
         Set<String> llista = document.keySet();
 
@@ -98,14 +98,24 @@ public class Model {
         llista.forEach((s) -> {
             keys.add(s);
         });
+        int cont = 0;
+        for (String s : keys) {
+            cont++;
+        }
 
-        return keys;
+        String[] keysNoms = new String[cont];
+        cont = 0;
+        for (String s : keys) {
+            keysNoms[cont] = s;
+            cont++;
+        }
+        return keysNoms;
 
     }
 
-    public String getValueFromKey(Document document, String key) {
+    public Object getValueFromKey(Object key) {
 
-        return document.getString(key);
+        return document.get(key);
 
     }
 
@@ -118,39 +128,43 @@ public class Model {
         }
 
     }
+
     public boolean updateDocument(String dades) {
         try {
-            collection.updateOne(document, Document.parse(dades));
+            collection.replaceOne(document, Document.parse(dades));
             return true;
         } catch (org.bson.json.JsonParseException e) {
             return false;
         }
 
     }
-    public boolean updateKey(String key, String valor) {
+
+    public boolean updateKey(Object key, String valor) {
         try {
-            BasicDBObject dades = new BasicDBObject("$set", new BasicDBObject(key, valor));
+            BasicDBObject dades = new BasicDBObject("$set", new BasicDBObject(key.toString(), valor));
             collection.updateOne(document, dades);
-            
+
             return true;
         } catch (org.bson.json.JsonParseException e) {
             return false;
         }
 
     }
-    
-     public boolean removeKey(String key) {
+
+    public boolean removeKey(String key) {
         try {
-            BasicDBObject dades = new BasicDBObject("$unset", new BasicDBObject(key ,""));
+            System.out.println(key);
+            System.out.println("astio");
+            BasicDBObject dades = new BasicDBObject("$unset", new BasicDBObject(key, ""));
             collection.updateOne(document, dades);
-            
+
             return true;
         } catch (org.bson.json.JsonParseException e) {
             return false;
         }
 
     }
-    
+
     public boolean removeDocument() {
         try {
             collection.deleteOne(document);

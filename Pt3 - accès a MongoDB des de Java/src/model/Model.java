@@ -12,10 +12,12 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
+import com.mongodb.util.JSON;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -78,6 +80,17 @@ public class Model {
         List<Document> documents = new ArrayList();
 
         for (Document doc : collection.find()) {
+            documents.add(doc);
+        }
+        return documents;
+    }
+    
+    public List<Document> filterDocuments(String projection, String filter, String sort) {
+        
+        
+        List<Document> documents = new ArrayList();
+
+        for (Document doc : collection.find().filter((Bson) JSON.parse(filter)).projection((Bson) JSON.parse(projection)).sort((Bson) JSON.parse(sort))) {
             documents.add(doc);
         }
         return documents;

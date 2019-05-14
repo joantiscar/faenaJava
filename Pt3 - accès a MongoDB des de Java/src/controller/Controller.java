@@ -111,6 +111,10 @@ public class Controller {
                 }
                 fillDocumentsTable();  
 
+            }
+            if (e.getSource().equals(v.getFindButton())) {
+               filterDocumentsTable();
+
             }  
         };
 
@@ -147,6 +151,7 @@ public class Controller {
         v.getDeleteCollectionButton().addActionListener(actionListener);
         v.getSaveClauButton().addActionListener(actionListener);
         v.getDeleteClauButton().addActionListener(actionListener);
+        v.getFindButton().addActionListener(actionListener);
         
     }
     private void fillDocumentsTable() {
@@ -155,6 +160,20 @@ public class Controller {
                 JsonParser jp = new JsonParser();
 
                 for (Document s : m.indexDocuments()) {
+                    JsonElement je = jp.parse(s.toJson());
+                    list.addElement(gson.toJson(je));
+                }
+                JList llista = v.getDocumentsList();
+                llista.setModel(list);
+                v.setDocumentsList(llista);
+        }
+    
+    private void filterDocumentsTable() {
+             DefaultListModel list = new DefaultListModel();
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                JsonParser jp = new JsonParser();
+
+                for (Document s : m.filterDocuments(v.getProjectionTextField().getText(), v.getFilterTextField().getText(), v.getSortTextField().getText())) {
                     JsonElement je = jp.parse(s.toJson());
                     list.addElement(gson.toJson(je));
                 }
